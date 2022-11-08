@@ -1,5 +1,6 @@
 import React from "react";
-import photo from "../../Pages/SimlePhotography.jpg";
+import { Link } from "react-router-dom";
+import photo from "../../assets/SimlePhotography.jpg";
 
 const Nav = () => {
   return (
@@ -28,30 +29,41 @@ const Nav = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>Home</a>
+                <Link to="/home">Home</Link>
               </li>
               <li>
-                <a>Blog</a>
+                <Link to="/blog">Blog</Link>
+              </li>
+              <li>
+                <div className=" ">
+                  <Link to="/" className="btn">
+                    Get started
+                  </Link>
+                </div>
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">
+          <Link to="/" className="btn btn-ghost normal-case text-xl">
             <img src={photo} className="h-12 w-14 mr-3 rounded-xl" alt="" />{" "}
             Smile Photography
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <li>
-              <a>Home</a>
+              <Link to="/home">Home</Link>
             </li>
             <li>
-              <a>Blog</a>
+              <Link to="/blog">Blog</Link>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+          <div className="hidden sm:block">
+            <Link to="/" className="btn">
+              Get started
+            </Link>
+          </div>
         </div>
       </div>
     </div>
