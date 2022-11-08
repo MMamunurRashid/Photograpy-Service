@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import photo from "../../assets/SimlePhotography.jpg";
+import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
 const Nav = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
   return (
     <div className="">
       <div className="navbar bg-primary text-primary-content  sm:px-20 mx-auto">
@@ -36,9 +43,15 @@ const Nav = () => {
               </li>
               <li>
                 <div className=" ">
-                  <Link to="/" className="btn">
-                    Get started
-                  </Link>
+                  {user?.email ? (
+                    <button onClick={handleLogOut} className="btn">
+                      LogOut
+                    </button>
+                  ) : (
+                    <Link to="/login" className="btn">
+                      Login
+                    </Link>
+                  )}
                 </div>
               </li>
             </ul>
@@ -60,9 +73,15 @@ const Nav = () => {
         </div>
         <div className="navbar-end">
           <div className="hidden sm:block">
-            <Link to="/" className="btn">
-              Get started
-            </Link>
+            {user?.email ? (
+              <button onClick={handleLogOut} className="btn">
+                LogOut
+              </button>
+            ) : (
+              <Link to="/login" className="btn">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>
