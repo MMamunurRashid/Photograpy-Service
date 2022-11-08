@@ -1,4 +1,5 @@
 import React from "react";
+import photo from "../../Pages/SimlePhotography.jpg";
 
 const Nav = () => {
   return (
@@ -27,23 +28,25 @@ const Nav = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>Item 1</a>
+                <a>Home</a>
               </li>
-
               <li>
-                <a>Item 3</a>
+                <a>Blog</a>
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <a className="btn btn-ghost normal-case text-xl">
+            <img src={photo} className="h-12 w-14 mr-3 rounded-xl" alt="" />{" "}
+            Smile Photography
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <li>
-              <a>Item 1</a>
+              <a>Home</a>
             </li>
             <li>
-              <a>Item 3</a>
+              <a>Blog</a>
             </li>
           </ul>
         </div>
