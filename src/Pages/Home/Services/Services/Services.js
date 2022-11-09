@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import ServicesCardHome from "../ServicesCardHome/ServicesCardHome";
 
 const Services = () => {
   const [packages, setPackages] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("http://localhost:5000/services-limit")
       .then((res) => res.json())
       .then((data) => setPackages(data));
   }, []);
@@ -25,7 +26,9 @@ const Services = () => {
         ))}
       </div>
       <div className="text-center">
-        <button className="btn btn-error">See More</button>
+        <Link to="/services" className="btn btn-error">
+          See More
+        </Link>
       </div>
     </div>
   );

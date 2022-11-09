@@ -1,6 +1,7 @@
 import React from "react";
-import Services from "../../Services/Services/Services";
+
 import Header from "../Header/Header";
+import Services from "../Services/Services/Services";
 
 const Home = () => {
   return (
