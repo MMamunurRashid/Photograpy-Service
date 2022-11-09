@@ -3,7 +3,7 @@ import Main from "../../LayOut/Main";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login/Login";
 import Register from "../../Pages/Login/Register/Register";
-import Service from "../../Pages/ServicesPage/Service/Service";
+import Service from "../../Pages/ServicesPage/ServiceRoute/Service/Service";
 import ServicesPage from "../../Pages/ServicesPage/ServicesPage/ServicesPage";
 
 const router = createBrowserRouter([
