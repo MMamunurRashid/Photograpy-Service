@@ -44,9 +44,16 @@ const Nav = () => {
               <li>
                 <div className=" ">
                   {user?.email ? (
-                    <button onClick={handleLogOut} className="btn">
-                      LogOut
-                    </button>
+                    <>
+                      <img
+                        className=" mask mask-circle w-12 h-12 sm:ml-4"
+                        src={user.photoURL}
+                        alt=""
+                      />
+                      <button onClick={handleLogOut} className="btn">
+                        LogOut
+                      </button>
+                    </>
                   ) : (
                     <Link to="/login" className="btn">
                       Login
@@ -73,15 +80,24 @@ const Nav = () => {
         </div>
         <div className="navbar-end">
           <div className="hidden sm:block">
-            {user?.email ? (
-              <button onClick={handleLogOut} className="btn">
-                LogOut
-              </button>
-            ) : (
-              <Link to="/login" className="btn">
-                Login
-              </Link>
-            )}
+            <div className="flex gap-2">
+              {user?.email ? (
+                <>
+                  <img
+                    className=" mask mask-circle w-12 h-12 sm:ml-4"
+                    src={user.photoURL}
+                    alt=""
+                  />
+                  <button onClick={handleLogOut} className="btn">
+                    LogOut
+                  </button>
+                </>
+              ) : (
+                <Link to="/login" className="btn">
+                  Login
+                </Link>
+              )}
+            </div>
           </div>
         </div>
       </div>

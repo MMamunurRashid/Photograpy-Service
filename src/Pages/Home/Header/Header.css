@@ -1,6 +1,7 @@
 .bg-images {
   background-image: url("https://www.tuhinhossainphotography.com/wp-content/themes/tuhin-photography/assets/img/wedding/large/WEDDING-PHOTO_10.jpg");
   height: 500px;
+  border-radius: 30px;
 }
 @media (max-width: 640px) {
   .bg-images {
@@ -9,4 +10,5 @@
 }
 .bg-title {
   background: linear-gradient(90deg, #151515 0%, rgba(21, 21, 21, 0) 100%);
+  border-radius: 30px;
 }

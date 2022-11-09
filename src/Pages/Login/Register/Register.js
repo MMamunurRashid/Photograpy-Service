@@ -4,12 +4,14 @@ import photo from "../../../assets/Smile.png";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const photoURL = form.photoURL.value;
     console.log(email, password);
 
     createUser(email, password)
@@ -17,7 +19,19 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         form.reset();
+        handleUpdateUserProfile(name, photoURL);
       })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+    updateUserProfile(profile)
+      .then(() => {})
       .catch((error) => {
         console.error(error);
       });
@@ -41,6 +55,18 @@ const Register = () => {
                   type="text"
                   name="name"
                   placeholder="Your Name"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">PhotoURL</span>
+                </label>
+                <input
+                  type="text"
+                  name="photoURL"
+                  placeholder="Your PhotoURL"
                   className="input input-bordered"
                   required
                 />

@@ -22,6 +22,7 @@ const Login = () => {
         console.error(error);
       });
   };
+
   return (
     <div>
       <div className="hero w-full my-32 ">
