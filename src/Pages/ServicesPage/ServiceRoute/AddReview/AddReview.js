@@ -20,6 +20,7 @@ const AddReview = ({ name, price, _id }) => {
       packageID: _id,
       packageName: name,
       price,
+      photoURL,
       customerName: displayName,
       email,
       reviewMessage,

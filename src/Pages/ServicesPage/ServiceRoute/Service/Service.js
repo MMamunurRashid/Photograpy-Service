@@ -27,7 +27,7 @@ const Service = () => {
           </div>
         </div>
       </div>
-      <ReviewSection></ReviewSection>
+      <ReviewSection name={name}></ReviewSection>
       <AddReview name={name}></AddReview>
     </div>
   );
