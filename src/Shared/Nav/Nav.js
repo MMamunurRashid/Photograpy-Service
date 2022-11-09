@@ -39,6 +39,9 @@ const Nav = () => {
                 <Link to="/home">Home</Link>
               </li>
               <li>
+                <Link to="/my-reviews">My Reviews</Link>
+              </li>
+              <li>
                 <Link to="/blog">Blog</Link>
               </li>
               <li>
@@ -73,6 +76,13 @@ const Nav = () => {
             <li>
               <Link to="/home">Home</Link>
             </li>
+            {user?.email ? (
+              <li>
+                <Link to="/my-reviews">My Reviews</Link>
+              </li>
+            ) : (
+              <></>
+            )}
             <li>
               <Link to="/blog">Blog</Link>
             </li>
