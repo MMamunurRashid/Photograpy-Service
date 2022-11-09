@@ -1,13 +1,17 @@
 import React from "react";
 import { HiOutlineTrash, HiPencil } from "react-icons/hi";
-const MyReviewCard = ({ review }) => {
-  console.log(review);
-  const { reviewMessage, packageName } = review;
+const MyReviewCard = ({ review, handleDeleteReview }) => {
+  //   console.log(review, handleDeleteReview);
+  const { _id, reviewMessage, packageName } = review;
+
   return (
     <tr>
       <td>
         <label>
-          <button className="btn btn-ghost hover:btn-error">
+          <button
+            onClick={() => handleDeleteReview(_id)}
+            className="btn btn-ghost hover:btn-error"
+          >
             <HiOutlineTrash title="Delete Review" className="w-6 h-6" />
           </button>
         </label>

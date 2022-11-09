@@ -9,11 +9,32 @@ const MyReviews = () => {
 
   //   console.log(reviews);
   useEffect(() => {
-    fetch(`http://localhost:5000/review?email=${user?.email}`)
+    fetch(`http://localhost:5000/my-review?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setReviews(data))
       .catch((err) => console.error(err));
   }, [user]);
+
+  const handleDeleteReview = (id) => {
+    const proceed = window.confirm(
+      "Are you sure, you want to delete the review?"
+    );
+    if (proceed) {
+      fetch(`http://localhost:5000/my-review/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.deletedCount > 0) {
+            alert("Deleted Successful");
+            const remaining = reviews.filter((review) => review._id !== id);
+            setReviews(remaining);
+          }
+        })
+        .catch((err) => console.error(err));
+    }
+  };
   return (
     <div>
       <div className="w-2/3 m-auto">
@@ -28,25 +49,33 @@ const MyReviews = () => {
             <h1>{user?.email}</h1>
           </div>
         </div>
-        <div>
-          <div className="overflow-x-auto w-full">
-            <table className="table w-full">
-              <thead className="">
-                <tr className=" ">
-                  <th>Delete</th>
-                  <th>Packages</th>
-                  <th>Review</th>
-                  <th>Edit</th>
-                </tr>
-              </thead>
-              <tbody>
-                {reviews.map((review) => (
-                  <MyReviewCard key={review._id} review={review}></MyReviewCard>
-                ))}
-              </tbody>
-            </table>
+        {reviews?.length !== 0 ? (
+          <div>
+            <div className="overflow-x-auto w-full">
+              <table className="table w-full">
+                <thead className="">
+                  <tr className=" ">
+                    <th>Delete</th>
+                    <th>Packages</th>
+                    <th>Review</th>
+                    <th>Edit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviews.map((review) => (
+                    <MyReviewCard
+                      key={review._id}
+                      review={review}
+                      handleDeleteReview={handleDeleteReview}
+                    ></MyReviewCard>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
+        ) : (
+          <>You Don't have any reviews</>
+        )}
       </div>
     </div>
   );
