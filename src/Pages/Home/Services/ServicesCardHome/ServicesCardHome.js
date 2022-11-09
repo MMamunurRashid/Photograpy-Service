@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ServicesCardHome = ({ pack }) => {
   const { name, picture, _id, price, details } = pack;
@@ -13,11 +14,13 @@ const ServicesCardHome = ({ pack }) => {
           <h2 className="card-title">{name}</h2>
           <p>
             Package Details:{" "}
-            {details ? details.slice(0, 100) + "...." : details}
+            {details.length === 70 ? details.slice(0, 70) + "...." : details}
           </p>
           <h2>Charges: {price} BDT</h2>
           <div className="card-actions">
-            <button className="btn btn-secondary">Book A Date</button>
+            <Link to={`/service/${_id}`} className="btn btn-secondary">
+              View Details
+            </Link>
           </div>
         </div>
       </div>
