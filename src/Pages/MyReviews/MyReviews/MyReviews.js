@@ -3,13 +3,13 @@ import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import MyReviewCard from "../MyReviewCard/MyReviewCard";
 import Swal from "sweetalert2";
 import useTitle from "../../../Hooks/useTitle";
+
 const MyReviews = () => {
   useTitle("My Reviews");
   const { user, logOut } = useContext(AuthContext);
 
   const [reviews, setReviews] = useState([]);
 
-  //   console.log(reviews);
   useEffect(() => {
     fetch(`http://localhost:5000/my-review?email=${user?.email} `, {
       // token verification for the user
@@ -54,27 +54,27 @@ const MyReviews = () => {
     }
   };
 
-  const handleUpdateReview = (id, editReviewMessage) => {
-    console.log(id);
-    fetch(`http://localhost:5000/my-review/${id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ reviewMessage: editReviewMessage }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          const remaining = reviews.filter((review) => review._id !== id);
-          const editing = reviews.find((review) => review._id === id);
-          editing.reviewMessage = editReviewMessage;
-          const newReviews = [...remaining, editing];
-          setReviews(newReviews);
-        }
-      });
-  };
+  //   const handleUpdateReview = (id, editReviewMessage) => {
+  //     console.log(id);
+  //     fetch(`http://localhost:5000/my-review/${id}`, {
+  //       method: "PATCH",
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify({ reviewMessage: editReviewMessage }),
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //         if (data.modifiedCount > 0) {
+  //           const remaining = reviews.filter((review) => review._id !== id);
+  //           const editing = reviews.find((review) => review._id === id);
+  //           editing.reviewMessage = editReviewMessage;
+  //           const newReviews = [...remaining, editing];
+  //           setReviews(newReviews);
+  //         }
+  //       });
+  //   };
 
   return (
     <div>
@@ -108,7 +108,6 @@ const MyReviews = () => {
                       key={review._id}
                       review={review}
                       handleDeleteReview={handleDeleteReview}
-                      handleUpdateReview={handleUpdateReview}
                     ></MyReviewCard>
                   ))}
                 </tbody>
@@ -116,7 +115,11 @@ const MyReviews = () => {
             </div>
           </div>
         ) : (
-          <>You Don't have any reviews</>
+          <>
+            <h1 className="text-center text-3xl my-40">
+              You Don't have any reviews
+            </h1>
+          </>
         )}
       </div>
     </div>

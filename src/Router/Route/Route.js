@@ -1,11 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../LayOut/Main";
+import NotFound from "../../Pages/404Route/NotFound";
 import AddService from "../../Pages/AddServices/AddServices/AddService";
 import Blog from "../../Pages/Blog/Blog";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login/Login";
 import Register from "../../Pages/Login/Register/Register";
 import MyReviews from "../../Pages/MyReviews/MyReviews/MyReviews";
+import UpdateMyReview from "../../Pages/MyReviews/UpdateMyReview/UpdateMyReview";
 import Service from "../../Pages/ServicesPage/ServiceRoute/Service/Service";
 import ServicesPage from "../../Pages/ServicesPage/ServicesPage/ServicesPage";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -50,6 +52,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      // {
+      //   path: "/update-my-review/:id",
+      //   element: <UpdateMyReview></UpdateMyReview>,
+      // },
       {
         path: "/add-service",
         element: (
@@ -61,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog></Blog>,
+      },
+      {
+        path: "*",
+        element: <NotFound></NotFound>,
       },
     ],
   },

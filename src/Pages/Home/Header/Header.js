@@ -8,7 +8,7 @@ const Header = () => {
       <div className="hero  bg-images">
         <div className="hero-overlay bg-title"></div>
         <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md bg-slate-700 opacity-60 p-10 rounded-full">
+          <div className="max-w-md sm:bg-slate-700 opacity-60 sm:p-10 rounded-full">
             <h1 className="mb-5 text-5xl font-bold font-serif text-white">
               Smile Photography
             </h1>

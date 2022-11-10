@@ -1,15 +1,9 @@
 import React from "react";
 import { HiOutlineTrash, HiPencil } from "react-icons/hi";
-const MyReviewCard = ({ review, handleDeleteReview, handleUpdateReview }) => {
+import { Link } from "react-router-dom";
+
+const MyReviewCard = ({ review, handleDeleteReview, children }) => {
   const { _id, reviewMessage, packageName } = review;
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const editReviewMessage = event.target.editReviewMessage.value;
-    handleUpdateReview(_id, editReviewMessage);
-    // console.log(editReviewMessage);
-  };
-
   return (
     <tr>
       <td>
@@ -30,33 +24,9 @@ const MyReviewCard = ({ review, handleDeleteReview, handleUpdateReview }) => {
         <h1 className="">{reviewMessage}</h1>
       </td>
       <td>
-        <label htmlFor="my-modal-6" className="btn btn-ghost hover:btn-error">
+        <Link to={`/update-my-review/${_id}`}>
           <HiPencil title="Edit Review" className="w-6 h-6" />
-        </label>
-        <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-        <div className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box">
-            <h3 className="font-bold text-lg">Edit your review</h3>
-            <form onSubmit={handleSubmit}>
-              <textarea
-                className="textarea textarea-bordered w-full"
-                placeholder="Type your review"
-                name="editReviewMessage"
-              ></textarea>
-              <div className="modal-action">
-                <label htmlFor="my-modal-6" className="btn">
-                  Done
-                </label>
-                {/* <input
-                  htmlFor="my-modal-6"
-                  type="submit"
-                  className="btn"
-                  value="Done"
-                /> */}
-              </div>
-            </form>
-          </div>
-        </div>
+        </Link>
       </td>
     </tr>
   );

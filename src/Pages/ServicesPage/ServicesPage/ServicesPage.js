@@ -10,7 +10,7 @@ const ServicesPage = () => {
 
   return (
     <div>
-      <h1 className="text-white text-5xl text-center font-serif font-semibold ">
+      <h1 className="text-white text-5xl text-center font-serif font-semibold mt-5">
         My Services & Packages
       </h1>
       <p className="text-xl text-center ">
@@ -19,7 +19,7 @@ const ServicesPage = () => {
       </p>
 
       <PhotoProvider>
-        <div className="grid grid-cols-3 gap-3 mx-40 my-5">
+        <div className="grid sm:grid-cols-3 gap-3 sm:mx-40 my-5">
           {packages.map((pack) => (
             <ServicesCard key={pack._id} pack={pack}></ServicesCard>
           ))}

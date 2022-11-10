@@ -5,7 +5,7 @@ import AddReview from "../AddReview/AddReview";
 import ReviewSection from "../ReviewSection/ReviewSection";
 
 const Service = () => {
-  useTitle("Service&Package");
+  useTitle("Service & Package");
   const { name, details, price, picture } = useLoaderData();
   console.log(name);
   return (

@@ -13,8 +13,8 @@ const ReviewSection = ({ name }) => {
       .catch((err) => console.error(err));
   }, [name]);
   return (
-    <div className="w-2/3 m-auto">
-      <h1>
+    <div className="sm:w-2/3 m-auto">
+      <h1 className="text-2xl text-white text-center my-6">
         Packages: {name} have {reviews.length} reviews
       </h1>
       <div>
@@ -27,9 +27,13 @@ const ReviewSection = ({ name }) => {
               </tr>
             </thead>
             <tbody>
-              {reviews.map((review) => (
-                <ReviewCard key={review._id} review={review}></ReviewCard>
-              ))}
+              {reviews?.length === 0 ? (
+                <></>
+              ) : (
+                reviews.map((review) => (
+                  <ReviewCard key={review._id} review={review}></ReviewCard>
+                ))
+              )}
             </tbody>
           </table>
         </div>

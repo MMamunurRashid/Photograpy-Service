@@ -22,7 +22,7 @@ const Services = () => {
         the town.
       </p>
       <PhotoProvider>
-        <div className="grid grid-cols-3 gap-3 mx-40 my-5">
+        <div className="grid sm:grid-cols-3 gap-5 sm:mx-40 my-5">
           {packages.map((pack) => (
             <ServicesCardHome key={pack._id} pack={pack}></ServicesCardHome>
           ))}

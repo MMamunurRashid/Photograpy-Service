@@ -46,8 +46,13 @@ const AddService = () => {
   };
   return (
     <div>
-      <h1>Add a Service & Package</h1>
-      <form onSubmit={handleAddService} className="bg-slate-200 px-20 py-32">
+      <h1 className="sm:text-5xl text-3xl text-center mt-5">
+        Add a Service & Package
+      </h1>
+      <form
+        onSubmit={handleAddService}
+        className=" sm:px-20 sm:py-32 py-3 px-3"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
           <input
             name="name"
