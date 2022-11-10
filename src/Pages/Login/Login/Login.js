@@ -1,13 +1,29 @@
 import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaGoogle } from "react-icons/fa";
 import photo from "../../../assets/Smile.png";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, googleLogin } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
+  //handle google login auth
+  const handleGoogleLogin = () => {
+    googleLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.error(error));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -81,6 +97,15 @@ const Login = () => {
                 SignUp
               </Link>
             </p>
+            <h1 className="text-2xl text-center">OR</h1>
+            <div className="btn-group btn-group-vertical mb-10 mx-6">
+              <button
+                onClick={handleGoogleLogin}
+                className="btn btn-primary mt-2"
+              >
+                <FaGoogle className="mr-3 w-6 h-6" /> Login with Google
+              </button>
+            </div>
           </div>
         </div>
       </div>
