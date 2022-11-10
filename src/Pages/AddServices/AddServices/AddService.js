@@ -22,7 +22,7 @@ const AddService = () => {
       picture,
       details,
     };
-    fetch("http://localhost:5000//services", {
+    fetch("https://assignment-11-server-lime.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",

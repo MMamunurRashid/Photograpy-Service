@@ -16,12 +16,15 @@ const UpdateMyReview = () => {
   const [reviews, setReviews] = useState(review);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/my-review?email=${user?.email} `, {
-      // token verification for the user
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
+    fetch(
+      `https://assignment-11-server-lime.vercel.app/my-review?email=${user?.email} `,
+      {
+        // token verification for the user
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401) {
           logOut();
@@ -34,13 +37,16 @@ const UpdateMyReview = () => {
 
   const handleUpdateReview = (event) => {
     event.preventDefault();
-    fetch(`http://localhost:5000/my-review/${review._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(reviews),
-    })
+    fetch(
+      `https://assignment-11-server-lime.vercel.app/my-review/${review._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(reviews),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         Swal.fire({

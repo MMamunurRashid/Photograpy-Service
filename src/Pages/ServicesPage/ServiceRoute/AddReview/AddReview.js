@@ -27,8 +27,9 @@ const AddReview = ({ name, price, _id }) => {
       customerName: displayName,
       email,
       reviewMessage,
+      date: new Date(),
     };
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://assignment-11-server-lime.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
