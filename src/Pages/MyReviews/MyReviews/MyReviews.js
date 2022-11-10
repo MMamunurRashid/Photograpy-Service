@@ -3,17 +3,27 @@ import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import MyReviewCard from "../MyReviewCard/MyReviewCard";
 import Swal from "sweetalert2";
 const MyReviews = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const [reviews, setReviews] = useState([]);
 
   //   console.log(reviews);
   useEffect(() => {
-    fetch(`http://localhost:5000/my-review?email=${user?.email}`)
-      .then((res) => res.json())
+    fetch(`http://localhost:5000/my-review?email=${user?.email} `, {
+      // token verification for the user
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401) {
+          logOut();
+        }
+        return res.json();
+      })
       .then((data) => setReviews(data))
       .catch((err) => console.error(err));
-  }, [user]);
+  }, [user, logOut]);
 
   const handleDeleteReview = (id) => {
     const proceed = window.confirm(
