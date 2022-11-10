@@ -4,9 +4,10 @@ import { AuthContext } from "../../../../Contexts/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
 const AddReview = ({ name, price, _id }) => {
-  //   console.log(name);
+  // context
   const { user } = useContext(AuthContext);
 
+  // review submit handler
   const handleReviewSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -17,6 +18,7 @@ const AddReview = ({ name, price, _id }) => {
 
     console.log(email, photoURL, displayName, reviewMessage);
 
+    //review object for add review post data
     const review = {
       packageID: _id,
       packageName: name,

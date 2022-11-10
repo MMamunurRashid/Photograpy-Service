@@ -1,12 +1,18 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import photo from "../../../assets/Smile.png";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import useTitle from "../../../Hooks/useTitle";
 
 const Register = () => {
+  //dynamic page title
   useTitle("Register");
   const { createUser, updateUserProfile } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/login";
+  //register form submit handler
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -16,17 +22,21 @@ const Register = () => {
     const photoURL = form.photoURL.value;
     console.log(email, password);
 
+    // create user
     createUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
         form.reset();
+
         handleUpdateUserProfile(name, photoURL);
       })
       .catch((error) => {
         console.error(error);
       });
   };
+  //update user profile handler
   const handleUpdateUserProfile = (name, photoURL) => {
     const profile = {
       displayName: name,

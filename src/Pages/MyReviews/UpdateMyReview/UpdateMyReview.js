@@ -1,10 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
+import useTitle from "../../../Hooks/useTitle";
 
 const UpdateMyReview = () => {
+  useTitle("Update My Review");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/my-reviews";
+
+  const review = useLoaderData();
   const { user, logOut } = useContext(AuthContext);
-  const [reviews, setReviews] = useState([]);
-  console.log(reviews);
+  const [reviews, setReviews] = useState(review);
 
   useEffect(() => {
     fetch(`http://localhost:5000/my-review?email=${user?.email} `, {
@@ -25,40 +34,57 @@ const UpdateMyReview = () => {
 
   const handleUpdateReview = (event) => {
     event.preventDefault();
-    const form = event.target;
+    fetch(`http://localhost:5000/my-review/${review._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(reviews),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Successfully Update your Review",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(from, { replace: true });
+        console.log(data);
+      });
+  };
 
-    const reviewMessage = form.reviewMessage.value;
-    // fetch(`http://localhost:5000/my-review/${id}}`, {
-    //   method: "PATCH",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify({ reviewMessage: reviewMessage }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     if (data.modifiedCount > 0) {
-    //       const remaining = reviews.filter((review) => review._id !== id);
-    //       const editing = reviews.find((review) => review._id === id);
-    //       editing.reviewMessage = reviewMessage;
-    //       const newReviews = [...remaining, editing];
-    //       setReviews(newReviews);
-    //     }
-    //   });
+  const handleUpdateChange = (event) => {
+    const field = event.target.name;
+    const value = event.target.value;
+    const newReview = { ...reviews };
+    newReview[field] = value;
+    setReviews(newReview);
   };
 
   return (
-    <div>
-      <h1>Update your Review</h1>
+    <div className="sm:w-1/2  sm:m-auto mx-4">
+      <h1 className="sm:text-4xl text-xl font-serif sm:my-10 my-5">
+        Update Review for {review.packageName}
+      </h1>
       <form onSubmit={handleUpdateReview}>
         <textarea
+          onChange={handleUpdateChange}
+          defaultValue={review.reviewMessage}
           name="reviewMessage"
-          className="textarea textarea-bordered"
+          className="textarea textarea-bordered h-40 w-full"
           placeholder="Type here your updated review"
           required
         ></textarea>
-        <input type="submit" value="Submit" />
+        <br />
+        <div className="text-center my-5">
+          <input
+            type="submit"
+            value="Submit"
+            className="btn btn-success hover:btn-secondary"
+          />
+        </div>
       </form>
     </div>
   );

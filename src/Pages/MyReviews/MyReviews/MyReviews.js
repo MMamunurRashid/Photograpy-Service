@@ -5,9 +5,9 @@ import Swal from "sweetalert2";
 import useTitle from "../../../Hooks/useTitle";
 
 const MyReviews = () => {
+  //dynamic title page
   useTitle("My Reviews");
   const { user, logOut } = useContext(AuthContext);
-
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const MyReviews = () => {
       .catch((err) => console.error(err));
   }, [user, logOut]);
 
+  // delete my review by id
   const handleDeleteReview = (id) => {
     const proceed = window.confirm(
       "Are you sure, you want to delete the review?"
@@ -53,29 +54,6 @@ const MyReviews = () => {
         .catch((err) => console.error(err));
     }
   };
-
-  //   const handleUpdateReview = (id, editReviewMessage) => {
-  //     console.log(id);
-  //     fetch(`http://localhost:5000/my-review/${id}`, {
-  //       method: "PATCH",
-  //       headers: {
-  //         "content-type": "application/json",
-  //       },
-  //       body: JSON.stringify({ reviewMessage: editReviewMessage }),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log(data);
-  //         if (data.modifiedCount > 0) {
-  //           const remaining = reviews.filter((review) => review._id !== id);
-  //           const editing = reviews.find((review) => review._id === id);
-  //           editing.reviewMessage = editReviewMessage;
-  //           const newReviews = [...remaining, editing];
-  //           setReviews(newReviews);
-  //         }
-  //       });
-  //   };
-
   return (
     <div>
       <div className="w-2/3 m-auto">

@@ -4,24 +4,25 @@ import Swal from "sweetalert2";
 import useTitle from "../../../Hooks/useTitle";
 
 const AddService = () => {
+  //dynamic title name set
   useTitle("Add Service");
 
   const handleAddService = (event) => {
     event.preventDefault();
-
     const form = event.target;
     const name = form.name.value;
     const picture = form.picture.value;
     const price = form.price.value;
     const details = form.details.value;
 
+    //service object for post add service data
     const service = {
       name: name,
       price: price,
       picture,
       details,
     };
-    fetch("http://localhost:5000/services", {
+    fetch("http://localhost:5000//services", {
       method: "POST",
       headers: {
         "content-type": "application/json",

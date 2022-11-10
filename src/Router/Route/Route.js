@@ -52,10 +52,12 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      // {
-      //   path: "/update-my-review/:id",
-      //   element: <UpdateMyReview></UpdateMyReview>,
-      // },
+      {
+        path: "/update-my-review/:id",
+        element: <UpdateMyReview></UpdateMyReview>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/my-review/${params.id}`),
+      },
       {
         path: "/add-service",
         element: (
