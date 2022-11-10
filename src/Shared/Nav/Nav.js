@@ -38,9 +38,18 @@ const Nav = () => {
               <li>
                 <Link to="/home">Home</Link>
               </li>
-              <li>
-                <Link to="/my-reviews">My Reviews</Link>
-              </li>
+              {user?.email ? (
+                <>
+                  <li>
+                    <Link to="/my-reviews">My Reviews</Link>
+                  </li>
+                  <li>
+                    <Link to="/add-service">Add Service</Link>
+                  </li>
+                </>
+              ) : (
+                <></>
+              )}
               <li>
                 <Link to="/blog">Blog</Link>
               </li>
@@ -77,9 +86,14 @@ const Nav = () => {
               <Link to="/home">Home</Link>
             </li>
             {user?.email ? (
-              <li>
-                <Link to="/my-reviews">My Reviews</Link>
-              </li>
+              <>
+                <li>
+                  <Link to="/my-reviews">My Reviews</Link>
+                </li>
+                <li>
+                  <Link to="/add-service">Add Service</Link>
+                </li>
+              </>
             ) : (
               <></>
             )}

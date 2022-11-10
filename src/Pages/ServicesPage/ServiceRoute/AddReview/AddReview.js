@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../Contexts/AuthProvider/AuthProvider";
 
 const AddReview = ({ name, price, _id }) => {
@@ -42,32 +43,47 @@ const AddReview = ({ name, price, _id }) => {
       .catch((err) => console.error(err));
   };
   return (
-    <div className="w-1/2 m-auto my-5">
-      <div className="flex gap-5 items-center justify-center my-5">
-        <div className="avatar">
-          <div className="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src={user?.photoURL} alt="" />
+    <div>
+      {user?.email ? (
+        <div className="w-1/2 m-auto my-5">
+          <div className="flex gap-5 items-center justify-center my-5">
+            <div className="avatar">
+              <div className="w-14 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src={user?.photoURL} alt="" />
+              </div>
+            </div>
+            <div>
+              <h1>{user?.displayName}</h1>
+              <h1>{user?.email}</h1>
+            </div>
           </div>
+          <form onSubmit={handleReviewSubmit}>
+            <textarea
+              name="review"
+              className="textarea textarea-bordered w-full"
+              placeholder={`Type your review for ${name}`}
+              required
+            ></textarea>
+            <br />
+            <input
+              className="btn btn-primary"
+              type="submit"
+              value="Submit Your Review"
+            />
+          </form>
         </div>
-        <div>
-          <h1>{user?.displayName}</h1>
-          <h1>{user?.email}</h1>
+      ) : (
+        <div className="w-1/2 m-auto my-5">
+          <h1 className="text-5xl text-center ">
+            Please Login for add your review.{" "}
+            <span>
+              <Link to="/login" className="btn btn-error hover:btn-secondary">
+                Login
+              </Link>
+            </span>
+          </h1>
         </div>
-      </div>
-      <form onSubmit={handleReviewSubmit}>
-        <textarea
-          name="review"
-          className="textarea textarea-bordered w-full"
-          placeholder={`Type your review for ${name}`}
-          required
-        ></textarea>
-        <br />
-        <input
-          className="btn btn-primary"
-          type="submit"
-          value="Submit Your Review"
-        />
-      </form>
+      )}
     </div>
   );
 };
