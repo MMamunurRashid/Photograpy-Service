@@ -2,8 +2,10 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ServicesCard from "../ServicesCard/ServicesCard";
 import { PhotoProvider } from "react-photo-view";
+import useTitle from "../../../Hooks/useTitle";
 
 const ServicesPage = () => {
+  useTitle("Services & Packages");
   const packages = useLoaderData();
 
   return (

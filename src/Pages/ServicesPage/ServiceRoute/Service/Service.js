@@ -1,10 +1,12 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../../../Hooks/useTitle";
 import AddReview from "../AddReview/AddReview";
 import ReviewSection from "../ReviewSection/ReviewSection";
 
 const Service = () => {
-  const { name, details, _id, price, picture } = useLoaderData();
+  useTitle("Service&Package");
+  const { name, details, price, picture } = useLoaderData();
   console.log(name);
   return (
     <div>
