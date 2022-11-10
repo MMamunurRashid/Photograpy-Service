@@ -35,6 +35,29 @@ const MyReviews = () => {
         .catch((err) => console.error(err));
     }
   };
+
+  const handleUpdateReview = (id, editReviewMessage) => {
+    console.log(id);
+    fetch(`http://localhost:5000/my-review/${id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ reviewMessage: editReviewMessage }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          const remaining = reviews.filter((review) => review._id !== id);
+          const editing = reviews.find((review) => review._id === id);
+          editing.reviewMessage = editReviewMessage;
+          const newReviews = [...remaining, editing];
+          setReviews(newReviews);
+        }
+      });
+  };
+
   return (
     <div>
       <div className="w-2/3 m-auto">
@@ -67,6 +90,7 @@ const MyReviews = () => {
                       key={review._id}
                       review={review}
                       handleDeleteReview={handleDeleteReview}
+                      handleUpdateReview={handleUpdateReview}
                     ></MyReviewCard>
                   ))}
                 </tbody>
