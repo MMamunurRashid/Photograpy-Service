@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
+import React from "react";
+
+import Swal from "sweetalert2";
 
 const AddService = () => {
-  const { user } = useContext(AuthContext);
-
   const handleAddService = (event) => {
     event.preventDefault();
 
@@ -30,7 +29,13 @@ const AddService = () => {
       .then((data) => {
         console.log(data);
         if (data.acknowledged) {
-          alert("Add service successfully");
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Successfully Added New Package",
+            showConfirmButton: false,
+            timer: 1500,
+          });
           form.reset();
         }
       })

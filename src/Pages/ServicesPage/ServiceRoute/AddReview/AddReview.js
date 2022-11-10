@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../Contexts/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddReview = ({ name, price, _id }) => {
   //   console.log(name);
@@ -36,7 +37,13 @@ const AddReview = ({ name, price, _id }) => {
       .then((data) => {
         console.log(data);
         if (data.acknowledged) {
-          alert("Reviews successfully");
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Thanks for your Review",
+            showConfirmButton: false,
+            timer: 1500,
+          });
           form.reset();
         }
       })

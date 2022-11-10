@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
 import MyReviewCard from "../MyReviewCard/MyReviewCard";
-
+import Swal from "sweetalert2";
 const MyReviews = () => {
   const { user } = useContext(AuthContext);
 
@@ -27,7 +27,13 @@ const MyReviews = () => {
         .then((data) => {
           console.log(data);
           if (data.deletedCount > 0) {
-            alert("Deleted Successful");
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Your review Deleted successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
             const remaining = reviews.filter((review) => review._id !== id);
             setReviews(remaining);
           }
