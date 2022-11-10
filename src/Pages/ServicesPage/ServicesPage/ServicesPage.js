@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ServicesCard from "../ServicesCard/ServicesCard";
+import { PhotoProvider } from "react-photo-view";
 
 const ServicesPage = () => {
   const packages = useLoaderData();
@@ -14,11 +15,14 @@ const ServicesPage = () => {
         I'm providing the best Budget Photography & Cinematography service in
         the town.
       </p>
-      <div className="grid grid-cols-3 gap-3 mx-40 my-5">
-        {packages.map((pack) => (
-          <ServicesCard key={pack._id} pack={pack}></ServicesCard>
-        ))}
-      </div>
+
+      <PhotoProvider>
+        <div className="grid grid-cols-3 gap-3 mx-40 my-5">
+          {packages.map((pack) => (
+            <ServicesCard key={pack._id} pack={pack}></ServicesCard>
+          ))}
+        </div>
+      </PhotoProvider>
     </div>
   );
 };

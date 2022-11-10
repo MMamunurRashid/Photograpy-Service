@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ServicesCardHome from "../ServicesCardHome/ServicesCardHome";
+import { PhotoProvider } from "react-photo-view";
 
 const Services = () => {
   const [packages, setPackages] = useState([]);
@@ -20,11 +21,13 @@ const Services = () => {
         I'm providing the best Budget Photography & Cinematography service in
         the town.
       </p>
-      <div className="grid grid-cols-3 gap-3 mx-40 my-5">
-        {packages.map((pack) => (
-          <ServicesCardHome key={pack._id} pack={pack}></ServicesCardHome>
-        ))}
-      </div>
+      <PhotoProvider>
+        <div className="grid grid-cols-3 gap-3 mx-40 my-5">
+          {packages.map((pack) => (
+            <ServicesCardHome key={pack._id} pack={pack}></ServicesCardHome>
+          ))}
+        </div>
+      </PhotoProvider>
       <div className="text-center">
         <Link to="/services" className="btn btn-error">
           See More
