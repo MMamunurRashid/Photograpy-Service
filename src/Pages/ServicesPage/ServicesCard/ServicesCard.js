@@ -16,10 +16,7 @@ const ServicesCard = ({ pack }) => {
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title">{name}</h2>
-          <p>
-            Package Details:{" "}
-            {details ? details.slice(0, 100) + "...." : details}
-          </p>
+          <p>Package Details: {details}</p>
           <h2>Charges: {price} BDT</h2>
           <div className="card-actions">
             <Link to={`/service/${_id}`} className="btn btn-secondary">

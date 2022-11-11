@@ -17,7 +17,7 @@ const ServicesCardHome = ({ pack }) => {
           <h2 className="card-title">{name}</h2>
           <p>
             Package Details:{" "}
-            {details.length === 70 ? details.slice(0, 70) + "...." : details}
+            {details.length !== 100 ? details.slice(0, 100) + "...." : details}
           </p>
           <h2>Charges: {price} BDT</h2>
           <div className="card-actions">

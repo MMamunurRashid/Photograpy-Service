@@ -98,7 +98,7 @@ const MyReviews = () => {
         ) : (
           <>
             <h1 className="text-center text-3xl my-40">
-              You Don't have any reviews
+              No reviews were added
             </h1>
           </>
         )}

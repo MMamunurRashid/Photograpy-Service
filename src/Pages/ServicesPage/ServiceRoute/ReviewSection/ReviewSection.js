@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../../Contexts/AuthProvider/AuthProvider";
+import React, { useEffect, useState } from "react";
+
 import ReviewCard from "./ReviewCard/ReviewCard";
 
 const ReviewSection = ({ name }) => {
-  const { loading } = useContext(AuthContext);
   console.log(name);
   const [reviews, setReviews] = useState([]);
 
@@ -19,7 +18,7 @@ const ReviewSection = ({ name }) => {
   return (
     <div className="sm:w-2/3 m-auto">
       <h1 className="text-2xl text-white text-center my-6">
-        Packages: {name} have {reviews.length} reviews
+        Package {name} have {reviews.length} reviews
       </h1>
       <div>
         <div className="overflow-x-auto w-full">

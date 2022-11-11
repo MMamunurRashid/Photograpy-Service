@@ -24,7 +24,7 @@ const Service = () => {
               Charge: {price} BDT
             </h2>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
+              <button className="btn btn-primary">Book A Date</button>
             </div>
           </div>
         </div>

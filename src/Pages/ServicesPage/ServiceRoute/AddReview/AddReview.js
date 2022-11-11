@@ -87,7 +87,7 @@ const AddReview = ({ name, price, _id }) => {
           <h1 className="sm:text-5xl text-center ">
             Please Login for add your review.{" "}
             <span className="text-orange-500">
-              <Link to="/login" className=" hover:btn-secondary">
+              <Link to="/login" className="btn hover:btn-secondary">
                 Login
               </Link>
             </span>

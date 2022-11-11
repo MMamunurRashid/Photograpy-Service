@@ -16,10 +16,10 @@ const PreviousWork = () => {
       item: "https://i0.wp.com/shaadiwish.com/blog/wp-content/uploads/2020/06/faisal-alam-1024x683.jpg",
     },
     {
-      item: "https://image.wedmegood.com/resized/540X/uploads/member/575596/1557337623_PSX_20190508_141812.jpg?crop=0,0,2048,1152",
+      item: "https://dmdigitals.com/wp-content/uploads/2021/05/Wedding-photography-bridal-shoot-1.jpg",
     },
     {
-      item: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaqog7xUunrZb3lRXIJpUNqDxcxRFWFmDHS1Ajicu-4qRoBkfolTcj41i42-84B5QkrIM&usqp=CAU",
+      item: "http://bdphotographers.com/blogs-and-news/wp-content/uploads/2017/05/14908368897W9A4672.jpg",
     },
     {
       item: "https://www.weddingsutra.com/images/Vendor_Images/Photographer/memoirs-photography/memoirs-photography-10.jpg",
@@ -29,7 +29,7 @@ const PreviousWork = () => {
     },
   ];
   return (
-    <div className="w-3/4 m-auto">
+    <div className="sm:w-3/4 m-auto w-11/12">
       <h1 className="text-white text-3xl text-center font-serif mt-20 mb-6">
         My Previous Work
       </h1>

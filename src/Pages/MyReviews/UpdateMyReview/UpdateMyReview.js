@@ -17,7 +17,7 @@ const UpdateMyReview = () => {
 
   useEffect(() => {
     fetch(
-      `https://assignment-11-server-lime.vercel.app/my-review?email=${user?.email} `,
+      `https://assignment-11-server-lime.vercel.app/my-review?${user?.email} `,
       {
         // token verification for the user
         headers: {
