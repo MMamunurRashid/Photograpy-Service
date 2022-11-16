@@ -37,11 +37,13 @@ const PreviousWork = () => {
         <div className="grid grid-cols-2 sm:grid-cols-4 sm:gap-5 gap-1">
           {images.map((item, idx) => (
             <PhotoView key={idx} src={item.item}>
-              <img
-                className="w-full sm:h-64 h-32  shadow-xl rounded-lg"
-                src={item.item}
-                alt=""
-              />
+              <div className="w-full sm:h-64 h-32 shadow-xl rounded-lg overflow-hidden ">
+                <img
+                  className="w-full sm:h-64 h-32  hover:cursor-pointer  transition ease-in-out delay-100 hover:-translate-y-[784px, 1446px] hover:scale-125  duration-500 hover:opacity-30 "
+                  src={item.item}
+                  alt=""
+                />
+              </div>
             </PhotoView>
           ))}
         </div>
