@@ -3,7 +3,7 @@ import React from "react";
 
 const ReviewCard = ({ review }) => {
   //   console.log(review);
-  const { customerName, photoURL, email, reviewMessage, date } = review;
+  const { customerName, photoURL, reviewMessage, date } = review;
   // const reviewDate = date.slice(0, 10);
   const reviewDate = format(new Date(date), "pp P");
   console.log(reviewDate);
@@ -16,7 +16,7 @@ const ReviewCard = ({ review }) => {
             <img src={photoURL} alt="" />
           </div>
         </div>
-        <div className="bg-slate-700 px-5 py-2 rounded-3xl">
+        <div className="border px-5 py-2 rounded-3xl">
           <div className="flex justify-between ">
             <h1 className="sm:mr-10">{customerName}</h1>
             <p>{reviewDate}</p>

@@ -7,7 +7,7 @@ const ServicesCardHome = ({ pack }) => {
   //   console.log(name);
   return (
     <div className="">
-      <div className="card  bg-base-100 shadow-xl">
+      <div className="card  bg-base-100 shadow-xl h-full">
         <figure className="px-10 pt-10 rounded-xl w-full sm:h-64 h-32 overflow-hidden">
           <PhotoView src={picture}>
             <img
@@ -24,8 +24,8 @@ const ServicesCardHome = ({ pack }) => {
             {details.length !== 100 ? details.slice(0, 100) + "...." : details}
           </p>
           <h2>Charges: {price} BDT</h2>
-          <div className="card-actions">
-            <Link to={`/service/${_id}`} className="btn btn-secondary">
+          <div className="card-actions ">
+            <Link to={`/service/${_id}`} className="btn btn-secondary ">
               View Details
             </Link>
           </div>

@@ -30,7 +30,7 @@ const PreviousWork = () => {
   ];
   return (
     <div className="sm:w-3/4 m-auto w-11/12">
-      <h1 className="text-white text-3xl text-center font-serif mt-20 mb-6">
+      <h1 className=" text-3xl text-center font-serif mt-20 mb-6">
         My Previous Work
       </h1>
       <PhotoProvider>

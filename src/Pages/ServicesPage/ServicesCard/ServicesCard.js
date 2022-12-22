@@ -8,7 +8,7 @@ const ServicesCard = ({ pack }) => {
   //   console.log(name);
   return (
     <div className="">
-      <div className="card  bg-base-100 shadow-xl">
+      <div className="card  bg-base-100 shadow-xl h-full">
         <figure className="px-10 pt-10 rounded-xl w-full sm:h-64 h-32">
           <PhotoView src={picture}>
             <img

@@ -7,7 +7,7 @@ const Blog = () => {
     <div className="sm:mx-32 mx-2 mb-5">
       {/* Question 1 */}
       <div className="mt-3">
-        <h1 className="text-xl sm:text-3xl font-serif font-semibold mb-3  text-white">
+        <h1 className="text-xl sm:text-3xl font-serif font-semibold mb-3  ">
           Difference between SQL and NoSQL
         </h1>
         <div className="overflow-x-auto">
@@ -49,12 +49,10 @@ const Blog = () => {
       </div>
       {/* Question 2 */}
       <div className="mt-8">
-        <h1 className="text-xl sm:text-3xl font-serif font-semibold mb-3  text-white">
+        <h1 className="text-xl sm:text-3xl font-serif font-semibold mb-3  ">
           What is JWT, and how does it work?
         </h1>
-        <h3 className="text-lg sm:text-xl text-white font-semibold">
-          What is JWT ?
-        </h3>
+        <h3 className="text-lg sm:text-xl  font-semibold">What is JWT ?</h3>
         <p className="sm:text-lg">
           JWT, or JSON Web Token, is an open standard used to share security
           information between two parties — a client and a server. Each JWT
@@ -62,7 +60,7 @@ const Blog = () => {
           signed using a cryptographic algorithm to ensure that the claims
           cannot be altered after the token is issued.
         </p>
-        <h3 className="text-lg sm:text-xl text-white font-semibold mt-3">
+        <h3 className="text-lg sm:text-xl  font-semibold mt-3">
           How does it work ?
         </h3>
         <p className="sm:text-lg">
@@ -75,7 +73,7 @@ const Blog = () => {
       </div>
       {/* Question 3 */}
       <div className="mt-8">
-        <h1 className="text-xl sm:text-3xl font-serif font-semibold mb-3  text-white">
+        <h1 className="text-xl sm:text-3xl font-serif font-semibold mb-3  ">
           What is the difference between javascript and NodeJS?
         </h1>
         <p className="sm:text-lg">
@@ -87,7 +85,7 @@ const Blog = () => {
       </div>
       {/* Question 4 */}
       <div className="mt-8">
-        <h1 className="text-xl sm:text-3xl font-serif font-semibold mb-3  text-white">
+        <h1 className="text-xl sm:text-3xl font-serif font-semibold mb-3  ">
           How does NodeJS handle multiple requests at the same time?
         </h1>
 

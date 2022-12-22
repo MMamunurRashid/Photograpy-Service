@@ -10,7 +10,7 @@ const ServicesPage = () => {
 
   return (
     <div>
-      <h1 className="text-white text-5xl text-center font-serif font-semibold mt-5">
+      <h1 className=" text-5xl text-center font-serif font-semibold mt-5">
         My Services & Packages
       </h1>
       <p className="text-xl text-center ">

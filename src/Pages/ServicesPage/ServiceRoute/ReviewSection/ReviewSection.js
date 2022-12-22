@@ -17,7 +17,7 @@ const ReviewSection = ({ name }) => {
   }, [name]);
   return (
     <div className="sm:w-1/2 m-auto">
-      <h1 className="text-2xl text-white text-center my-6">
+      <h1 className="text-2xl  text-center my-6 font-serif underline underline-offset-8">
         Package {name} have {reviews.length} reviews
       </h1>
 

@@ -18,7 +18,7 @@ const MyAccessories = () => {
   ];
   return (
     <div className="w-11/12 sm:w-3/4 m-auto mb-20">
-      <h1 className="text-white text-3xl text-center font-serif mt-20 mb-6">
+      <h1 className=" text-3xl text-center font-serif mt-20 mb-6">
         My Accessories
       </h1>
       <PhotoProvider>
