@@ -16,31 +16,18 @@ const ReviewSection = ({ name }) => {
       .catch((err) => console.error(err));
   }, [name]);
   return (
-    <div className="sm:w-2/3 m-auto">
+    <div className="sm:w-1/2 m-auto">
       <h1 className="text-2xl text-white text-center my-6">
         Package {name} have {reviews.length} reviews
       </h1>
-      <div>
-        <div className="overflow-x-auto w-full">
-          <table className="table w-full">
-            <thead className="">
-              <tr className=" ">
-                <th>Customer</th>
-                <th>Review</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reviews?.length === 0 ? (
-                <></>
-              ) : (
-                reviews.map((review) => (
-                  <ReviewCard key={review._id} review={review}></ReviewCard>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div>
+
+      {reviews?.length === 0 ? (
+        <></>
+      ) : (
+        reviews.map((review) => (
+          <ReviewCard key={review._id} review={review}></ReviewCard>
+        ))
+      )}
     </div>
   );
 };

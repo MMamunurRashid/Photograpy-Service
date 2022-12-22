@@ -16,7 +16,7 @@ const AddReview = ({ name, price, _id }) => {
     const displayName = user?.displayName;
     const reviewMessage = form.review.value;
 
-    console.log(email, photoURL, displayName, reviewMessage);
+    // console.log(email, photoURL, displayName, reviewMessage);
 
     //review object for add review post data
     const review = {
